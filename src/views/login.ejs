@@ -1,0 +1,30 @@
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+  <div class="card login-card p-4 shadow" style="max-width: 420px; width: 100%; border-radius: 18px;">
+    <div class="text-center mb-3">
+      <i class="fa-solid fa-right-to-bracket" style="font-size: 2.5rem; color: #6366f1;"></i>
+      <div class="mt-2" style="font-size: 1.1rem; color: #555;">
+        Đăng nhập để tham gia trò chuyện cùng mọi người!
+      </div>
+    </div>
+    <h2 class="text-center mb-4">Login</h2>
+    <form method="POST" action="/login">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-regular fa-user"></i></span>
+          <input type="text" name="username" class="form-control" required>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100 mb-2"><i class="fa-solid fa-right-to-bracket me-2"></i>Login</button>
+      <p class="mt-2 text-center">Don't have an account? <a href="/register">Register</a></p>
+    </form>
+  </div>
+</div>

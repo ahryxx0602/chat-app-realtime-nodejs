@@ -1,0 +1,35 @@
+<h2 class="text-center mb-4">Welcome, <%= username %></h2>
+
+<div class="card shadow">
+  <div class="card-body" id="messages">
+    <!-- Tin nhắn sẽ render tại đây -->
+  </div>
+  <div class="card-footer d-flex">
+    <input id="msg" class="form-control me-2" placeholder="Type your message..." />
+    <input type="file" id="imageInput" accept="image/*" hidden />
+      <button class="btn btn-outline-secondary me-2" onclick="document.getElementById('imageInput').click()">
+        <i class="fa-regular fa-image"></i> Ảnh
+      </button>
+
+      <div class="position-relative">
+        <button class="btn btn-outline-secondary mt-2" onclick="toggleEmojiPicker()">
+          <i class="fa-regular fa-face-smile"></i> Emoji
+        </button>
+      
+        <emoji-picker
+        id="emojiPicker"
+      ></emoji-picker>
+      </div>
+    <button onclick="sendMessage()" class="btn btn-primary">
+      <i class="fa-solid fa-paper-plane"></i> Send
+    </button>
+  </div>
+</div>
+
+<script>
+  window.token = "<%= token %>";
+  window.username = "<%= username %>";
+</script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
