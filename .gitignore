@@ -10,7 +10,6 @@ yarn-error.log*
 
 # Environment variables
 .env
-.env.*
 
 # OS
 .DS_Store
@@ -26,10 +25,18 @@ Thumbs.db
 /dist
 /build
 
+# Static uploads (nếu có upload ảnh)
+public/uploads/
+
 # Optional: Ignore coverage, test output
 coverage/
 .nyc_output/
 
 # Optional: Ignore local database
 *.sqlite
-*.db 
+*.db
+
+# Misc
+*.swp
+*.tmp
+*.bak 
