@@ -6,7 +6,7 @@ const input = document.getElementById("msg");
 const messages = document.getElementById("messages");
 const imageInput = document.getElementById("imageInput");
 
-// 📤 Gửi tin nhắn text
+// Gửi tin nhắn text
 function sendMessage() {
   const content = input.value;
   if (content.trim()) {
@@ -15,7 +15,7 @@ function sendMessage() {
   }
 }
 
-// 📤 Gửi sticker
+// Gửi sticker
 function sendSticker(url) {
   socket.emit("sendImage", url); // sticker là URL ảnh
 }
@@ -42,7 +42,7 @@ function toggleEmojiPicker() {
   picker.style.display = picker.style.display === "none" ? "block" : "none";
 }
 
-// 📌 Bắt sự kiện chọn emoji và thêm vào input
+// Bắt sự kiện chọn emoji và thêm vào input
 document
   .getElementById("emojiPicker")
   .addEventListener("emoji-click", (event) => {
@@ -52,7 +52,7 @@ document
     input.focus();
   });
 
-// 🧠 Lắng nghe phím Enter để gửi
+// Lắng nghe phím Enter để gửi
 input.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -73,8 +73,8 @@ socket.on("newMessage", (msg) => {
 function renderMessage(msg) {
   const item = document.createElement("div");
   const isMe = msg.sender === window.username;
-  // Đảo lại: đối phương mới có .self
-  item.className = "message" + (!isMe ? " self" : "");
+  // Tin nhắn của mình (.self) sẽ nằm bên phải
+  item.className = "message" + (isMe ? " self" : "");
 
   // Avatar
   const avatar = document.createElement("img");
@@ -97,12 +97,14 @@ function renderMessage(msg) {
   } else {
     // Tin nhắn text
     messageBubble.innerHTML =
-      (isMe
+      (!isMe
         ? `<span style='font-size:0.95em;color:#6366f1;font-weight:600;'>${msg.sender}</span><br>`
         : "") + msg.content;
   }
 
-  if (!isMe) {
+  // Đối phương (không có .self): avatar trái + bubble
+  // Mình (có .self): bubble + avatar phải
+  if (isMe) {
     item.appendChild(messageBubble);
     item.appendChild(avatar);
   } else {
